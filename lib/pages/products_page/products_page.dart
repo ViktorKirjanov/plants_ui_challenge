@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:plants_ui_challenge/blocs/products_bloc/products_bloc.dart';
 import 'package:plants_ui_challenge/pages/products_page/_widgets/avatar.dart';
@@ -114,10 +115,15 @@ class _ProductsPageViewState extends State<_ProductsPageView> {
                   child: BlocBuilder<ProductsBloc, ProductsState>(
                     builder: (_, state) {
                       if (state is SuccessProductsState) {
-                        return const Column(
+                        return Column(
                           children: [
                             Padding(
-                              padding: EdgeInsets.fromLTRB(32.0, 0.0, 32.0, 16.0),
+                              padding: EdgeInsets.fromLTRB(
+                                ScreenUtil().setWidth(32.0),
+                                0.0,
+                                ScreenUtil().setWidth(32.0),
+                                16.0,
+                              ),
                               child: Row(
                                 children: [
                                   Expanded(
@@ -143,10 +149,15 @@ class _ProductsPageViewState extends State<_ProductsPageView> {
                     return const Loader();
                   } else if (state is SuccessProductsState) {
                     return SliverPadding(
-                      padding: const EdgeInsets.fromLTRB(32.0, 16.0, 32.0, 96.0),
+                      padding: EdgeInsets.fromLTRB(
+                        ScreenUtil().setWidth(32.0),
+                        16.0,
+                        ScreenUtil().setWidth(32.0),
+                        96.0,
+                      ),
                       sliver: SliverMasonryGrid.count(
                         crossAxisCount: 2,
-                        crossAxisSpacing: 32.0,
+                        crossAxisSpacing: ScreenUtil().setWidth(32.0),
                         mainAxisSpacing: 0.0,
                         childCount: state.products.length + 1,
                         itemBuilder: (context, index) => index == 0
@@ -154,7 +165,9 @@ class _ProductsPageViewState extends State<_ProductsPageView> {
                                 count: state.products.length,
                               )
                             : Padding(
-                                padding: const EdgeInsets.only(bottom: 32.0),
+                                padding: EdgeInsets.only(
+                                  bottom: ScreenUtil().setWidth(32.0),
+                                ),
                                 child: PoductCard(
                                   product: state.products[index - 1],
                                   index: index,
