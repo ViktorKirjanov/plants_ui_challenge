@@ -1,8 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:plants_ui_challenge/products_page/product_page.dart';
+import 'package:flutter/services.dart';
+import 'package:plants_ui_challenge/products_page/products_page.dart';
 import 'package:plants_ui_challenge/styles/themes.dart';
 
-void main() {
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await SystemChrome.setPreferredOrientations([
+    DeviceOrientation.portraitUp,
+    DeviceOrientation.portraitDown,
+  ]);
   runApp(const MyApp());
 }
 
@@ -14,6 +20,6 @@ class MyApp extends StatelessWidget {
         title: 'Plants UI Challenge',
         debugShowCheckedModeBanner: false,
         theme: AppTheme.light,
-        home: const ProductPage(),
+        home: const ProductsPage(),
       );
 }

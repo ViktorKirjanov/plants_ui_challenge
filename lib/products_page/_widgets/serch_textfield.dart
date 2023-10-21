@@ -12,7 +12,7 @@ class SearchTextField extends StatelessWidget {
           prefixIcon: Icon(
             Icons.search,
             size: 24.0,
-            color: AppColors.grey4,
+            color: AppColors.grey6,
           ),
         ),
       );

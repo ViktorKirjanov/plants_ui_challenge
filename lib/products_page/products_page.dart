@@ -7,14 +7,14 @@ import 'package:plants_ui_challenge/products_page/_widgets/serch_textfield.dart'
 import 'package:plants_ui_challenge/products_page/_widgets/settings_button.dart';
 import 'package:plants_ui_challenge/styles/colors.dart';
 
-class ProductPage extends StatefulWidget {
-  const ProductPage({super.key});
+class ProductsPage extends StatefulWidget {
+  const ProductsPage({super.key});
 
   @override
-  State<ProductPage> createState() => _ProductPageState();
+  State<ProductsPage> createState() => _ProductsPageState();
 }
 
-class _ProductPageState extends State<ProductPage> {
+class _ProductsPageState extends State<ProductsPage> {
   final List<Map<String, dynamic>> _items = List.generate(
     50,
     (index) => {'id': index, 'title': 'Item $index'},

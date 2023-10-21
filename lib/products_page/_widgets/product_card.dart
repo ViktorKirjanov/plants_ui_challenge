@@ -1,4 +1,5 @@
 import 'package:flutter/cupertino.dart';
+import 'package:plants_ui_challenge/product_page/product_page.dart';
 import 'package:plants_ui_challenge/styles/colors.dart';
 
 class PoductCard extends StatelessWidget {
@@ -43,73 +44,79 @@ class PoductCard extends StatelessWidget {
     if (opacityValue < 0.0) opacityValue = 0.0;
     if (opacityValue > 1.0) opacityValue = 1.0;
 
-    return Padding(
-      padding: EdgeInsets.only(top: index > startAnimationFromIndex ? 100.0 * (1.0 - topPaddingValue) : 0.0),
-      child: Opacity(
-        opacity: index > startAnimationFromIndex ? opacityValue : 1.0,
-        child: ClipRRect(
-          borderRadius: BorderRadius.circular(20.0),
-          child: Container(
-            key: ValueKey(item['id']),
-            height: 300.0,
-            color: AppColors.white,
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                // for testing purposes only
-                // Text('topPaddingValue : ${topPaddingValue.toStringAsFixed(2)}'),
-                // Text('offset: ${offset.toStringAsFixed(2)}'),
-                // Text('position: ${currentBottomPosition.toStringAsFixed(2)}'),
-                // Text('end position: ${endPosition.toStringAsFixed(2)}'),
-                Expanded(
-                  child: Center(
-                    child: Image.asset(
-                      'assets/images/lucky-jade-plant.png',
-                      fit: BoxFit.cover,
+    return GestureDetector(
+      child: Padding(
+        padding: EdgeInsets.only(top: index > startAnimationFromIndex ? 100.0 * (1.0 - topPaddingValue) : 0.0),
+        child: Opacity(
+          opacity: index > startAnimationFromIndex ? opacityValue : 1.0,
+          child: ClipRRect(
+            borderRadius: BorderRadius.circular(20.0),
+            child: Container(
+              key: ValueKey(item['id']),
+              height: 300.0,
+              color: AppColors.white,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  // for testing purposes only
+                  // Text('topPaddingValue : ${topPaddingValue.toStringAsFixed(2)}'),
+                  // Text('offset: ${offset.toStringAsFixed(2)}'),
+                  // Text('position: ${currentBottomPosition.toStringAsFixed(2)}'),
+                  // Text('end position: ${endPosition.toStringAsFixed(2)}'),
+                  Expanded(
+                    child: Center(
+                      child: Image.asset(
+                        'assets/images/lucky-jade-plant.png',
+                        fit: BoxFit.cover,
+                      ),
                     ),
                   ),
-                ),
-                const Padding(
-                  padding: EdgeInsets.all(18.0),
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        'Lucky Jade Plant anfanf ajnsf kanfkj nafnk',
-                        style: TextStyle(
-                          fontWeight: FontWeight.w600,
-                          fontSize: 14.0,
-                        ),
-                        overflow: TextOverflow.ellipsis,
-                        maxLines: 2,
-                      ),
-                      SizedBox(height: 4.0),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Text(
-                            r'$12.99',
+                  const Padding(
+                    padding: EdgeInsets.all(18.0),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        SizedBox(
+                          height: 40.0,
+                          child: Text(
+                            'Lucky Jade Plant',
                             style: TextStyle(
-                              fontWeight: FontWeight.w800,
+                              fontWeight: FontWeight.w600,
                               fontSize: 14.0,
                             ),
+                            overflow: TextOverflow.ellipsis,
+                            maxLines: 2,
                           ),
-                          Icon(
-                            CupertinoIcons.heart_circle_fill,
-                            size: 30.0,
-                            color: AppColors.grey10,
-                          ),
-                        ],
-                      ),
-                    ],
+                        ),
+                        SizedBox(height: 4.0),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Text(
+                              r'$12.99',
+                              style: TextStyle(
+                                fontWeight: FontWeight.w800,
+                                fontSize: 14.0,
+                              ),
+                            ),
+                            Icon(
+                              CupertinoIcons.heart_circle_fill,
+                              size: 30.0,
+                              color: AppColors.grey10,
+                            ),
+                          ],
+                        ),
+                      ],
+                    ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
           ),
         ),
       ),
+      onTap: () => Navigator.of(context).push(ProductPage.route(uid: '123')),
     );
   }
 }
