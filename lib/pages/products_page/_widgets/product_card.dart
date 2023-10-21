@@ -1,16 +1,17 @@
 import 'package:flutter/cupertino.dart';
+import 'package:plants_ui_challenge/models/product_model.dart';
 import 'package:plants_ui_challenge/pages/product_page/product_page.dart';
 import 'package:plants_ui_challenge/styles/colors.dart';
 
 class PoductCard extends StatelessWidget {
   const PoductCard({
     super.key,
-    required this.item,
+    required this.product,
     required this.index,
     required this.offset,
   });
 
-  final Map<String, dynamic> item;
+  final Product product;
   final int index;
   final double offset;
 
@@ -52,7 +53,6 @@ class PoductCard extends StatelessWidget {
           child: ClipRRect(
             borderRadius: BorderRadius.circular(20.0),
             child: Container(
-              key: ValueKey(item['id']),
               height: 300.0,
               color: AppColors.white,
               child: Column(
@@ -66,13 +66,13 @@ class PoductCard extends StatelessWidget {
                   Expanded(
                     child: Center(
                       child: Image.asset(
-                        'assets/images/lucky-jade-plant.png',
+                        product.image,
                         fit: BoxFit.cover,
                       ),
                     ),
                   ),
-                  const Padding(
-                    padding: EdgeInsets.all(18.0),
+                  Padding(
+                    padding: const EdgeInsets.all(18.0),
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       crossAxisAlignment: CrossAxisAlignment.start,
@@ -80,8 +80,8 @@ class PoductCard extends StatelessWidget {
                         SizedBox(
                           height: 40.0,
                           child: Text(
-                            'Lucky Jade Plant',
-                            style: TextStyle(
+                            product.name,
+                            style: const TextStyle(
                               fontWeight: FontWeight.w600,
                               fontSize: 14.0,
                             ),
@@ -89,18 +89,18 @@ class PoductCard extends StatelessWidget {
                             maxLines: 2,
                           ),
                         ),
-                        SizedBox(height: 4.0),
+                        const SizedBox(height: 4.0),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             Text(
-                              r'$12.99',
-                              style: TextStyle(
+                              '\$${product.price}',
+                              style: const TextStyle(
                                 fontWeight: FontWeight.w800,
                                 fontSize: 14.0,
                               ),
                             ),
-                            Icon(
+                            const Icon(
                               CupertinoIcons.heart_circle_fill,
                               size: 30.0,
                               color: AppColors.grey7,
@@ -116,7 +116,10 @@ class PoductCard extends StatelessWidget {
           ),
         ),
       ),
-      onTap: () => Navigator.of(context).push(ProductPage.route(uid: '123')),
+      onTap: () {
+        FocusManager.instance.primaryFocus?.unfocus();
+        Navigator.of(context).push(ProductPage.route(product: product));
+      },
     );
   }
 }

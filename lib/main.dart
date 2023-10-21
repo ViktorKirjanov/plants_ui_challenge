@@ -1,9 +1,13 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:plants_ui_challenge/blocs/bloc_observer.dart';
 import 'package:plants_ui_challenge/pages/init_page/init_page.dart';
 import 'package:plants_ui_challenge/styles/themes.dart';
 
 Future<void> main() async {
+  if (kDebugMode) Bloc.observer = AppBlocObserver();
   WidgetsFlutterBinding.ensureInitialized();
   await SystemChrome.setPreferredOrientations([
     DeviceOrientation.portraitUp,

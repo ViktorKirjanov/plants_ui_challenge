@@ -1,10 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:plants_ui_challenge/models/product_model.dart';
 
 class PlantInfo extends StatelessWidget {
-  const PlantInfo({super.key});
+  const PlantInfo({
+    super.key,
+    required this.product,
+  });
+
+  final Product product;
 
   @override
-  Widget build(BuildContext context) => const Positioned(
+  Widget build(BuildContext context) => Positioned(
         bottom: 300.0,
         left: 0.0,
         right: 0.0,
@@ -14,21 +20,21 @@ class PlantInfo extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Padding(
-                padding: EdgeInsets.symmetric(horizontal: 32.0),
+                padding: const EdgeInsets.symmetric(horizontal: 32.0),
                 child: Text(
-                  'Lucky jade plant',
-                  style: TextStyle(
+                  product.name,
+                  style: const TextStyle(
                     fontSize: 24.0,
                     fontWeight: FontWeight.w800,
                   ),
                 ),
               ),
-              SizedBox(height: 16.0),
+              const SizedBox(height: 16.0),
               Padding(
-                padding: EdgeInsets.symmetric(horizontal: 32.0),
+                padding: const EdgeInsets.symmetric(horizontal: 32.0),
                 child: Text(
-                  'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod. ',
-                  style: TextStyle(
+                  product.description,
+                  style: const TextStyle(
                     fontSize: 14.0,
                     height: 1.6,
                   ),

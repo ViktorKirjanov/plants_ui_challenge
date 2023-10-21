@@ -3,7 +3,12 @@ import 'package:plants_ui_challenge/styles/colors.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 class VerticalCarousel extends StatefulWidget {
-  const VerticalCarousel({super.key});
+  const VerticalCarousel({
+    super.key,
+    required this.image,
+  });
+
+  final String image;
 
   @override
   State<VerticalCarousel> createState() => _VerticalCarouselState();
@@ -35,7 +40,7 @@ class _VerticalCarouselState extends State<VerticalCarousel> {
                 padding: const EdgeInsets.only(bottom: 50.0),
                 child: Center(
                   child: Image.asset(
-                    'assets/images/snake-plant.png',
+                    widget.image,
                     fit: BoxFit.cover,
                   ),
                 ),
