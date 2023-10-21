@@ -1,4 +1,5 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:like_button/like_button.dart';
 import 'package:plants_ui_challenge/blocs/products_bloc/products_bloc.dart';
@@ -48,99 +49,98 @@ class PoductCard extends StatelessWidget {
     if (opacityValue < 0.0) opacityValue = 0.0;
     if (opacityValue > 1.0) opacityValue = 1.0;
 
-    return GestureDetector(
-      child: Padding(
-        padding: EdgeInsets.only(top: index > startAnimationFromIndex ? 100.0 * (1.0 - topPaddingValue) : 0.0),
-        child: Opacity(
-          opacity: index > startAnimationFromIndex ? opacityValue : 1.0,
-          child: ClipRRect(
-            borderRadius: BorderRadius.circular(20.0),
-            child: Container(
-              height: 300.0,
-              color: AppColors.white,
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  // for testing purposes only
-                  // Text('topPaddingValue : ${topPaddingValue.toStringAsFixed(2)}'),
-                  // Text('offset: ${offset.toStringAsFixed(2)}'),
-                  // Text('position: ${currentBottomPosition.toStringAsFixed(2)}'),
-                  // Text('end position: ${endPosition.toStringAsFixed(2)}'),
-                  Expanded(
-                    child: Center(
-                      child: Image.asset(
-                        product.image,
-                        fit: BoxFit.cover,
+    return Padding(
+      padding: EdgeInsets.only(top: index > startAnimationFromIndex ? 100.0 * (1.0 - topPaddingValue) : 0.0),
+      child: Opacity(
+        opacity: index > startAnimationFromIndex ? opacityValue : 1.0,
+        child: ClipRRect(
+          borderRadius: BorderRadius.circular(20.0),
+          child: Material(
+            color: Colors.white,
+            child: InkWell(
+              splashColor: AppColors.green.withOpacity(0.05),
+              highlightColor: AppColors.green2.withOpacity(0.05),
+              child: SizedBox(
+                height: 300.0,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Expanded(
+                      child: Center(
+                        child: Image.asset(
+                          product.image,
+                          fit: BoxFit.cover,
+                        ),
                       ),
                     ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.all(18.0),
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        SizedBox(
-                          height: 40.0,
-                          child: Text(
-                            product.name,
-                            style: const TextStyle(
-                              fontWeight: FontWeight.w600,
-                              fontSize: 14.0,
-                            ),
-                            overflow: TextOverflow.ellipsis,
-                            maxLines: 2,
-                          ),
-                        ),
-                        const SizedBox(height: 4.0),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Text(
-                              '\$${product.price}',
+                    Padding(
+                      padding: const EdgeInsets.all(18.0),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          SizedBox(
+                            height: 40.0,
+                            child: Text(
+                              product.name,
                               style: const TextStyle(
-                                fontWeight: FontWeight.w800,
+                                fontWeight: FontWeight.w600,
                                 fontSize: 14.0,
                               ),
+                              overflow: TextOverflow.ellipsis,
+                              maxLines: 2,
                             ),
-                            LikeButton(
-                              size: 30.0,
-                              circleColor: CircleColor(
-                                start: AppColors.green.withOpacity(.1),
-                                end: AppColors.green2.withOpacity(.1),
+                          ),
+                          const SizedBox(height: 4.0),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Text(
+                                '\$${product.price}',
+                                style: const TextStyle(
+                                  fontWeight: FontWeight.w800,
+                                  fontSize: 14.0,
+                                ),
                               ),
-                              isLiked: product.isLiked,
-                              circleSize: 100.0,
-                              bubblesSize: 50.0,
-                              bubblesColor: const BubblesColor(
-                                dotPrimaryColor: AppColors.green,
-                                dotSecondaryColor: AppColors.green2,
-                              ),
-                              likeBuilder: (bool isLiked) => Icon(
-                                CupertinoIcons.heart_circle_fill,
-                                color: isLiked ? AppColors.green2 : AppColors.grey7,
+                              LikeButton(
                                 size: 30.0,
+                                circleColor: CircleColor(
+                                  start: AppColors.green.withOpacity(.1),
+                                  end: AppColors.green2.withOpacity(.1),
+                                ),
+                                isLiked: product.isLiked,
+                                circleSize: 100.0,
+                                bubblesSize: 50.0,
+                                bubblesColor: const BubblesColor(
+                                  dotPrimaryColor: AppColors.green,
+                                  dotSecondaryColor: AppColors.green2,
+                                ),
+                                likeBuilder: (bool isLiked) => Icon(
+                                  CupertinoIcons.heart_circle_fill,
+                                  color: isLiked ? AppColors.green2 : AppColors.grey7,
+                                  size: 30.0,
+                                ),
+                                onTap: (isLiked) async {
+                                  context.read<ProductsBloc>().add(LikeToggle(id: product.id));
+                                  return !isLiked;
+                                },
                               ),
-                              onTap: (isLiked) async {
-                                context.read<ProductsBloc>().add(LikeToggle(id: product.id));
-                                return !isLiked;
-                              },
-                            ),
-                          ],
-                        ),
-                      ],
+                            ],
+                          ),
+                        ],
+                      ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
+              onTap: () {
+                FocusManager.instance.primaryFocus?.unfocus();
+                Navigator.of(context).push(ProductPage.route(product: product));
+              },
             ),
           ),
         ),
       ),
-      onTap: () {
-        FocusManager.instance.primaryFocus?.unfocus();
-        Navigator.of(context).push(ProductPage.route(product: product));
-      },
     );
   }
 }
