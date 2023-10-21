@@ -19,7 +19,7 @@ class SettingButton extends StatelessWidget {
         child: const Center(
           child: Icon(
             CupertinoIcons.slider_horizontal_3,
-            color: AppColors.grey10,
+            color: AppColors.grey7,
             size: 28.0,
           ),
         ),

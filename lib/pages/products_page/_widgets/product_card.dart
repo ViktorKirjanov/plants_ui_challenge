@@ -1,5 +1,5 @@
 import 'package:flutter/cupertino.dart';
-import 'package:plants_ui_challenge/product_page/product_page.dart';
+import 'package:plants_ui_challenge/pages/product_page/product_page.dart';
 import 'package:plants_ui_challenge/styles/colors.dart';
 
 class PoductCard extends StatelessWidget {
@@ -103,7 +103,7 @@ class PoductCard extends StatelessWidget {
                             Icon(
                               CupertinoIcons.heart_circle_fill,
                               size: 30.0,
-                              color: AppColors.grey10,
+                              color: AppColors.grey7,
                             ),
                           ],
                         ),

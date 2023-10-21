@@ -63,7 +63,7 @@ class AppTheme {
       ),
       errorMaxLines: 2,
       labelStyle: TextStyle(
-        color: AppColors.grey10,
+        color: AppColors.grey7,
         fontSize: 16.0,
         fontWeight: FontWeight.w400,
       ),

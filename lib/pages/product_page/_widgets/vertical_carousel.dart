@@ -10,7 +10,16 @@ class VerticalCarousel extends StatefulWidget {
 }
 
 class _VerticalCarouselState extends State<VerticalCarousel> {
-  final pageController = PageController(viewportFraction: 1.0, keepPage: true);
+  final pageController = PageController(
+    viewportFraction: 1.0,
+    keepPage: true,
+  );
+
+  @override
+  void dispose() {
+    pageController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) => Stack(
