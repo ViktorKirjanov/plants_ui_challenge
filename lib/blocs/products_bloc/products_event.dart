@@ -7,4 +7,13 @@ sealed class ProductsEvent extends Equatable {
   List<Object> get props => [];
 }
 
-class GetProductsEvent extends ProductsEvent {}
+class GetProducts extends ProductsEvent {}
+
+class LikeToggle extends ProductsEvent {
+  const LikeToggle({required this.id});
+
+  final int id;
+
+  @override
+  List<Object> get props => [id];
+}

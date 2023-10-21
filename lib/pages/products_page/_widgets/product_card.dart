@@ -1,4 +1,7 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:like_button/like_button.dart';
+import 'package:plants_ui_challenge/blocs/products_bloc/products_bloc.dart';
 import 'package:plants_ui_challenge/models/product_model.dart';
 import 'package:plants_ui_challenge/pages/product_page/product_page.dart';
 import 'package:plants_ui_challenge/styles/colors.dart';
@@ -100,10 +103,28 @@ class PoductCard extends StatelessWidget {
                                 fontSize: 14.0,
                               ),
                             ),
-                            const Icon(
-                              CupertinoIcons.heart_circle_fill,
+                            LikeButton(
                               size: 30.0,
-                              color: AppColors.grey7,
+                              circleColor: CircleColor(
+                                start: AppColors.green.withOpacity(.1),
+                                end: AppColors.green2.withOpacity(.1),
+                              ),
+                              isLiked: product.isLiked,
+                              circleSize: 100.0,
+                              bubblesSize: 50.0,
+                              bubblesColor: const BubblesColor(
+                                dotPrimaryColor: AppColors.green,
+                                dotSecondaryColor: AppColors.green2,
+                              ),
+                              likeBuilder: (bool isLiked) => Icon(
+                                CupertinoIcons.heart_circle_fill,
+                                color: isLiked ? AppColors.green2 : AppColors.grey7,
+                                size: 30.0,
+                              ),
+                              onTap: (isLiked) async {
+                                context.read<ProductsBloc>().add(LikeToggle(id: product.id));
+                                return !isLiked;
+                              },
                             ),
                           ],
                         ),
