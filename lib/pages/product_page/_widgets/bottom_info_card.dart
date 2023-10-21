@@ -1,9 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:plants_ui_challenge/models/product_model.dart';
 import 'package:plants_ui_challenge/pages/product_page/_widgets/info_icon.dart';
 import 'package:plants_ui_challenge/styles/colors.dart';
 
 class BottomInfoCard extends StatelessWidget {
-  const BottomInfoCard({super.key});
+  const BottomInfoCard({
+    super.key,
+    required this.product,
+  });
+
+  final Product product;
 
   @override
   Widget build(BuildContext context) => Container(
@@ -20,35 +26,35 @@ class BottomInfoCard extends StatelessWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              const Row(
+              Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   InfoIcon(
                     path: 'assets/svg/spacing.svg',
                     title: 'Height',
-                    info: '30cm - 40cm ',
+                    info: '${product.minHeight}cm - ${product.maxHeight}cm ',
                   ),
                   InfoIcon(
                     path: 'assets/svg/temperature.svg',
                     title: 'Temperature',
-                    info: '25°C to 25°C',
+                    info: '${product.minTemperature}°C to ${product.maxTemperature}°C',
                   ),
                   InfoIcon(
                     path: 'assets/svg/plant.svg',
                     title: 'Pot',
-                    info: '30cm - 40cm ',
+                    info: '${product.minPotSize}cm - ${product.maxPotSize}cm',
                   ),
                 ],
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  const Padding(
-                    padding: EdgeInsets.only(left: 12.0),
+                  Padding(
+                    padding: const EdgeInsets.only(left: 12.0),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text(
+                        const Text(
                           'Total price',
                           style: TextStyle(
                             color: AppColors.white,
@@ -56,10 +62,10 @@ class BottomInfoCard extends StatelessWidget {
                             fontSize: 16.0,
                           ),
                         ),
-                        SizedBox(height: 4.0),
+                        const SizedBox(height: 4.0),
                         Text(
-                          r'$12.99',
-                          style: TextStyle(
+                          '\$${product.price}',
+                          style: const TextStyle(
                             color: AppColors.white,
                             fontWeight: FontWeight.w800,
                             fontSize: 16.0,
