@@ -8,26 +8,28 @@ part 'products_state.dart';
 
 class ProductsBloc extends Bloc<ProductsEvent, ProductsState> {
   ProductsBloc() : super(InitialProductsState()) {
-    on<GetProductsEvent>(
-      _onGetProductsEvent,
-    );
+    on<GetProducts>(_onGetProductsEvent);
+    on<LikeToggle>(_onLikeToggle);
   }
 
   Future<void> _onGetProductsEvent(
-    GetProductsEvent event,
+    GetProducts event,
     Emitter<ProductsState> emit,
   ) async {
     emit(LoadingProductsState());
     await Future<void>.delayed(const Duration(seconds: 3));
+    emit(const SuccessProductsState(products: products));
+  }
 
-    final List<Product> productList = [
-      ...products,
-      ...products,
-      ...products,
-      ...products,
-      ...products,
-    ];
-
-    emit(SuccessProductsState(products: productList));
+  Future<void> _onLikeToggle(
+    LikeToggle event,
+    Emitter<ProductsState> emit,
+  ) async {
+    final newProducts = [...(state as SuccessProductsState).products];
+    final index = newProducts.indexWhere((element) => element.id == event.id);
+    final newValue = !newProducts[index].isLiked;
+    final newProduct = newProducts[index].copyWith(isLiked: newValue);
+    newProducts[index] = newProduct;
+    emit(SuccessProductsState(products: newProducts));
   }
 }

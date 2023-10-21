@@ -23,7 +23,7 @@ class ProductsPage extends StatelessWidget {
         child: Scaffold(
           backgroundColor: AppColors.grey3,
           body: BlocProvider<ProductsBloc>(
-            create: (context) => ProductsBloc()..add(GetProductsEvent()),
+            create: (context) => ProductsBloc()..add(GetProducts()),
             child: const _ProductsPageView(),
           ),
         ),
