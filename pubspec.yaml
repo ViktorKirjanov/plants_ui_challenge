@@ -42,6 +42,7 @@ dependencies:
   equatable: ^2.0.5
   loading_animation_widget: ^1.2.0+4
   like_button: ^2.0.5
+  flutter_screenutil: ^5.9.0
 
 dev_dependencies:
   flutter_test:

@@ -2,9 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:plants_ui_challenge/styles/colors.dart';
 
 class AnimatedCircle extends StatefulWidget {
-  const AnimatedCircle({super.key, required this.containerHeight});
+  const AnimatedCircle({
+    super.key,
+    required this.minSize,
+    required this.maxSize,
+  });
 
-  final double containerHeight;
+  final double minSize;
+  final double maxSize;
 
   @override
   AnimatedCircleState createState() => AnimatedCircleState();
@@ -36,8 +41,8 @@ class AnimatedCircleState extends State<AnimatedCircle> with SingleTickerProvide
           builder: (context, child) => Opacity(
             opacity: 1.0 - _controller.value,
             child: Container(
-              width: 100 + _controller.value * (widget.containerHeight - 100),
-              height: 100 + _controller.value * (widget.containerHeight - 100),
+              width: widget.minSize + _controller.value * (widget.maxSize - widget.minSize),
+              height: widget.minSize + _controller.value * (widget.maxSize - widget.minSize),
               decoration: BoxDecoration(
                 shape: BoxShape.circle,
                 border: Border.all(

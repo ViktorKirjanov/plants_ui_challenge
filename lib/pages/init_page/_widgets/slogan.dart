@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class Slogan extends StatelessWidget {
   const Slogan({super.key});
@@ -8,14 +9,14 @@ class Slogan extends StatelessWidget {
         flex: 2,
         child: Center(
           child: RichText(
-            text: const TextSpan(
+            text: TextSpan(
               text: 'Enjoy your\n',
               style: TextStyle(
                 color: Colors.black,
-                fontSize: 42,
+                fontSize: ScreenUtil().setSp(42.0),
                 fontWeight: FontWeight.w300,
               ),
-              children: <TextSpan>[
+              children: const <TextSpan>[
                 TextSpan(
                   text: 'Life with ',
                   style: TextStyle(),

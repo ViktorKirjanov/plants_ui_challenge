@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:plants_ui_challenge/models/product_model.dart';
 import 'package:plants_ui_challenge/pages/product_page/_widgets/info_icon.dart';
 import 'package:plants_ui_challenge/styles/colors.dart';
@@ -75,8 +76,8 @@ class BottomInfoCard extends StatelessWidget {
                     ),
                   ),
                   SizedBox(
-                    height: 80.0,
-                    width: 210.0,
+                    height: ScreenUtil().setHeight(80.0),
+                    width: ScreenUtil().setWidth(210.0),
                     child: TextButton(
                       style: ButtonStyle(
                         backgroundColor: MaterialStateProperty.all(AppColors.green2),
