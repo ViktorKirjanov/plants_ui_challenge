@@ -1,16 +1,27 @@
-# plants_ui_challenge
+# Flutter Coding Challenge: Plants UI App
 
-A new Flutter project.
+# Signup
 
-## Getting Started
+challenge link: https://www.youtube.com/live/aERczKh_uMk?si=e_eKUaUP4Ihaj7r_&t=360
 
-This project is a starting point for a Flutter application.
 
-A few resources to get you started if this is your first Flutter project:
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+ | Init | Products | Product |
+ |------|----------|---------|
+ |<img src="screenshots/screen_1.png" width="300">|<img src="screenshots/screen_2.png" width="300"> |<img src="screenshots/screen_3.png" width="300"> |
+
+
+ 
+
+
+# Features
+* BLoC
+* Llinter
+* Animations
+  * Init page - Circle button
+  * Products page - Like button
+  * Products page - grid bottom appearance animation
+  * Products page - custom avatar animation
+  * Products page - product card onTap inkWell animation
+
