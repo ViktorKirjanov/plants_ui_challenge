@@ -6,7 +6,7 @@ class AppTheme {
   static ThemeData light = ThemeData(
     useMaterial3: true,
     canvasColor: Colors.transparent,
-    scaffoldBackgroundColor: AppColors.primaryBackground,
+    scaffoldBackgroundColor: AppColors.grey4,
     colorScheme: ColorScheme.fromSeed(
       brightness: Brightness.light,
       seedColor: AppColors.primary,
@@ -67,7 +67,7 @@ class AppTheme {
         fontSize: 16.0,
         fontWeight: FontWeight.w400,
       ),
-      hintStyle: TextStyle(color: AppColors.grey4),
+      hintStyle: TextStyle(color: AppColors.grey6),
     ),
   );
 }
