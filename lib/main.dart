@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:plants_ui_challenge/products_page/products_page.dart';
+import 'package:plants_ui_challenge/pages/init_page/init_page.dart';
 import 'package:plants_ui_challenge/styles/themes.dart';
 
 Future<void> main() async {
@@ -20,6 +20,6 @@ class MyApp extends StatelessWidget {
         title: 'Plants UI Challenge',
         debugShowCheckedModeBanner: false,
         theme: AppTheme.light,
-        home: const ProductsPage(),
+        home: const InitPage(),
       );
 }

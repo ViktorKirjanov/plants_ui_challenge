@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:plants_ui_challenge/product_page/_widgets/info_icon.dart';
+import 'package:plants_ui_challenge/pages/product_page/_widgets/info_icon.dart';
 import 'package:plants_ui_challenge/styles/colors.dart';
 
 class BottomInfoCard extends StatelessWidget {

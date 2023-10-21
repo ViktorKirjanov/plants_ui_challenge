@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
-import 'package:plants_ui_challenge/products_page/_widgets/avatar.dart';
-import 'package:plants_ui_challenge/products_page/_widgets/found_header.dart';
-import 'package:plants_ui_challenge/products_page/_widgets/product_card.dart';
-import 'package:plants_ui_challenge/products_page/_widgets/serch_textfield.dart';
-import 'package:plants_ui_challenge/products_page/_widgets/settings_button.dart';
+import 'package:plants_ui_challenge/pages/products_page/_widgets/avatar.dart';
+import 'package:plants_ui_challenge/pages/products_page/_widgets/found_header.dart';
+import 'package:plants_ui_challenge/pages/products_page/_widgets/product_card.dart';
+import 'package:plants_ui_challenge/pages/products_page/_widgets/serch_textfield.dart';
+import 'package:plants_ui_challenge/pages/products_page/_widgets/settings_button.dart';
 import 'package:plants_ui_challenge/styles/colors.dart';
 
 class ProductsPage extends StatefulWidget {
@@ -12,6 +12,10 @@ class ProductsPage extends StatefulWidget {
 
   @override
   State<ProductsPage> createState() => _ProductsPageState();
+
+  static MaterialPageRoute<void> route() => MaterialPageRoute(
+        builder: (_) => const ProductsPage(),
+      );
 }
 
 class _ProductsPageState extends State<ProductsPage> {
@@ -50,6 +54,8 @@ class _ProductsPageState extends State<ProductsPage> {
           controller: _scrollController,
           slivers: <Widget>[
             SliverAppBar(
+              automaticallyImplyLeading: false,
+              centerTitle: true,
               elevation: 0.0,
               shadowColor: AppColors.grey1,
               surfaceTintColor: AppColors.grey3,
@@ -76,7 +82,7 @@ class _ProductsPageState extends State<ProductsPage> {
                 children: [
                   IconButton(
                     icon: const Icon(Icons.arrow_back_ios_new_rounded),
-                    onPressed: () {},
+                    onPressed: Navigator.of(context).pop,
                   ),
                   const Text(
                     'Search Products',
