@@ -27,7 +27,6 @@ class ProductsBloc extends Bloc<ProductsEvent, ProductsState> {
   ) async {
     final newProducts = [...(state as SuccessProductsState).products];
     final index = newProducts.indexWhere((element) => element.id == event.id);
-    print("----index: $index");
     final newValue = !newProducts[index].isLiked;
     final newProduct = newProducts[index].copyWith(isLiked: newValue);
     newProducts[index] = newProduct;
