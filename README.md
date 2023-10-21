@@ -1,8 +1,6 @@
 # Flutter Coding Challenge: Plants UI App
 
-# Signup
-
-challenge link: https://www.youtube.com/live/aERczKh_uMk?si=e_eKUaUP4Ihaj7r_&t=360
+link: https://www.youtube.com/live/aERczKh_uMk?si=e_eKUaUP4Ihaj7r_&t=360
 
 
 
@@ -17,8 +15,8 @@ challenge link: https://www.youtube.com/live/aERczKh_uMk?si=e_eKUaUP4Ihaj7r_&t=3
 
 # Features
 * BLoC
-* Llinter
-* Animations
+* Linter
+* Animation:
   * Init page - Circle button
   * Products page - Like button
   * Products page - grid bottom appearance animation
